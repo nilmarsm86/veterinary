@@ -9,7 +9,7 @@ const NewsList = ({ newsList }) => {
   return (
     <Layout>
       <Head>
-        <title>Test next</title>
+        <title>Veterinaria</title>
       </Head>
       <h2>Listado de noticias veterinarias</h2>
       <NewsListComponent newsList={newsList} />

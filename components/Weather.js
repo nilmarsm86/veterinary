@@ -9,12 +9,13 @@ const Weather = ({ data }) => {
         {kelvinToCelcius(data.main.temp)} <span>&#x2103;</span>
       </p>
       <p>
-        Máxima temperatura: {kelvinToCelcius(data.main.temp_max)}
-        &#x2103;
+        <b>Tiempo:</b> {data.weather[0].description}
       </p>
       <p>
-        Mínima temperatura: {kelvinToCelcius(data.main.temp_min)}
-        &#x2103;
+        <b>Presión:</b> {data.main.pressure}
+      </p>
+      <p>
+        <b>Humedad:</b> {data.main.humidity}
       </p>
     </>
   );
