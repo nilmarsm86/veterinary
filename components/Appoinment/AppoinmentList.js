@@ -4,12 +4,13 @@ import { reducer } from "../../lib/reducer";
 
 const AppoinmentList = () => {
   const [state, dispatch] = useReducer(reducer, [], (initial) => {
-    return JSON.parse(localStorage.getItem("appointments")) || initial;
+    return !!window
+      ? JSON.parse(localStorage.getItem("appointments"))
+      : initial;
   });
-  console.log(state);
 
   useEffect(() => {
-    localStorage.setItem("appointments", JSON.stringify(state));
+    !!window ? localStorage.setItem("appointments", JSON.stringify(state)) : "";
   }, [state]);
 
   return (
