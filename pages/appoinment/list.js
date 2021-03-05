@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import { reducer, getLocalStorageData } from "../../lib/reducer";
-import Appointment from "../../components/Appointment";
+import AppoinmentList from "../../components/Appoinment/AppoinmentList";
 import React, { useReducer } from "react";
 
 export default function List() {
@@ -15,16 +15,11 @@ export default function List() {
   return (
     <Layout>
       <Head>
-        <title>Test next</title>
+        <title>Citas planificadas</title>
       </Head>
 
       <h2 className="card-title text-center mb-5">{title}</h2>
-
-      <div className="lista-citas">
-        {state.data.map((appointment) => (
-          <Appointment key={appointment.id} data={appointment} />
-        ))}
-      </div>
+      <AppoinmentList />
     </Layout>
   );
 }

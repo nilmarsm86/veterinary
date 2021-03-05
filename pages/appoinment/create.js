@@ -29,7 +29,9 @@ const Create = () => {
     if (error) {
       return;
     }
+
     const { mascot, owner, date, time, symptoms } = formAttrs;
+
     let newAppoinment = {
       id: Date.now(),
       mascot: mascot.value,
@@ -39,6 +41,7 @@ const Create = () => {
       symptoms: symptoms.value,
     };
     dispatch({ type: "add", data: newAppoinment });
+    setFormModel(formInitialData);
   };
 
   return (
@@ -52,14 +55,20 @@ const Create = () => {
       </h2>
 
       {error && (
-        <div className="alert alert-danger mt-2 mb-5 text-center red">
+        <div
+          className="alert alert-danger mt-2 mb-5 text-center red"
+          style={{
+            borderRadius: "5px",
+            color: "white",
+            padding: "3px",
+            fontWeight: "bold",
+          }}
+        >
           (*) Todos los campos son obligatorios
         </div>
       )}
 
-      <form onSubmit={submitForm.bind(this)}>
-        {/*group element */}
-
+      <form onSubmit={submitForm.bind(this)} style={{ marginBottom: "10px" }}>
         <div className="input-field col s10">
           <input
             type="text"
@@ -69,9 +78,6 @@ const Create = () => {
           />
         </div>
 
-        {/*group element */}
-
-        {/*group element */}
         <div className="input-field col s10">
           <input
             type="text"
@@ -80,9 +86,7 @@ const Create = () => {
             {...formAttrs.owner}
           />
         </div>
-        {/*group element */}
 
-        {/*group element */}
         <div className="input-field col s10">
           <input type="date" className="form-control" {...formAttrs.date} />
         </div>
@@ -90,9 +94,7 @@ const Create = () => {
         <div className="input-field col s10">
           <input type="time" className="form-control" {...formAttrs.time} />
         </div>
-        {/*group element */}
 
-        {/*group element */}
         <div className="input-field col s10">
           <textarea
             className="form-control"
@@ -100,12 +102,12 @@ const Create = () => {
             {...formAttrs.symptoms}
           ></textarea>
         </div>
-        {/*group element */}
 
         <input
           type="submit"
           className="btn btn-success btn-block py-3 nt-2"
           value="Add new appointment"
+          style={{ marginLeft: "10px" }}
         />
       </form>
     </Layout>
