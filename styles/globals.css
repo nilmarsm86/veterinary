@@ -69,3 +69,11 @@ h2 {
   transition: all 0.5s ease-in;
   transform: scale(1);
 }
+
+.temperatura {
+  font-size: 4rem !important;
+}
+.temperatura span {
+  font-size: 2rem !important;
+  vertical-align: super;
+}
