@@ -18,6 +18,7 @@ const NewsList = ({ newsList }) => {
           target="_blank"
           rel="noreferrer"
           className="waves-effect waves-light btn btn-block"
+          style={{ marginLeft: "10px", marginBottom: "10px" }}
         >
           Exportar listado
         </a>

@@ -1,13 +1,20 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useEffect } from "react";
 import Appointment from "./Appointment";
-import { reducer, getLocalStorageData } from "../../lib/reducer";
+import { reducer } from "../../lib/reducer";
 
 const AppoinmentList = () => {
-  const [state, dispatch] = useReducer(reducer, [], getLocalStorageData);
+  const [state, dispatch] = useReducer(reducer, [], (initial) => {
+    return JSON.parse(localStorage.getItem("appointments")) || initial;
+  });
+  console.log(state);
+
+  useEffect(() => {
+    localStorage.setItem("appointments", JSON.stringify(state));
+  }, [state]);
 
   return (
     <div className="lista-citas">
-      {state.data.map((appointment) => (
+      {state.map((appointment) => (
         <Appointment
           key={appointment.id}
           data={appointment}
