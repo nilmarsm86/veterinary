@@ -4,9 +4,6 @@ import { reducer } from "../../lib/reducer";
 
 const AppoinmentList = () => {
   const [state, dispatch] = useReducer(reducer, [], (initial) => {
-    /*return !!window
-      ? JSON.parse(localStorage.getItem("appointments"))
-      : initial;*/
     if (typeof window !== "undefined") {
       return JSON.parse(localStorage.getItem("appointments"));
     } else {
@@ -15,7 +12,6 @@ const AppoinmentList = () => {
   });
 
   useEffect(() => {
-    //!!window ? localStorage.setItem("appointments", JSON.stringify(state)) : "";
     if (typeof window !== "undefined") {
       localStorage.setItem("appointments", JSON.stringify(state));
     }
@@ -23,13 +19,14 @@ const AppoinmentList = () => {
 
   return (
     <div className="lista-citas">
-      {state.map((appointment) => (
-        <Appointment
-          key={appointment.id}
-          data={appointment}
-          handler={dispatch}
-        />
-      ))}
+      {state &&
+        state.map((appointment) => (
+          <Appointment
+            key={appointment.id}
+            data={appointment}
+            handler={dispatch}
+          />
+        ))}
     </div>
   );
 };
