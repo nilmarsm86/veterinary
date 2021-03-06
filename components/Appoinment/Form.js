@@ -4,9 +4,14 @@ import { reducer, getLocalStorageData } from "../../lib/reducer";
 
 const Form = () => {
   const [state, dispatch] = useReducer(reducer, [], (initial) => {
-    return !!window
+    /*return !!window
       ? JSON.parse(localStorage.getItem("appointments"))
-      : initial;
+      : initial;*/
+    if (window) {
+      return JSON.parse(localStorage.getItem("appointments"));
+    } else {
+      return initial;
+    }
   });
 
   const formInitialData = {
@@ -47,7 +52,10 @@ const Form = () => {
   };
 
   useEffect(() => {
-    !!window ? localStorage.setItem("appointments", JSON.stringify(state)) : "";
+    //!!window ? localStorage.setItem("appointments", JSON.stringify(state)) : "";
+    if (window) {
+      localStorage.setItem("appointments", JSON.stringify(state));
+    }
   }, [state]);
 
   return (
