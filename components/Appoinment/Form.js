@@ -7,7 +7,7 @@ const Form = () => {
     /*return !!window
       ? JSON.parse(localStorage.getItem("appointments"))
       : initial;*/
-    if (window) {
+    if (!!window) {
       return JSON.parse(localStorage.getItem("appointments"));
     } else {
       return initial;
@@ -53,7 +53,7 @@ const Form = () => {
 
   useEffect(() => {
     //!!window ? localStorage.setItem("appointments", JSON.stringify(state)) : "";
-    if (window) {
+    if (!!window) {
       localStorage.setItem("appointments", JSON.stringify(state));
     }
   }, [state]);
